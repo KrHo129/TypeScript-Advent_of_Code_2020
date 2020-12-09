@@ -40,7 +40,6 @@ export class D09P02Service {
         if (this.getSumOfArray(numbers) === invalidNumber) {
           invalidSetStartNumber = this.getMinValue(numbers);
           invalidSetEndNumber = this.getMaxValue(numbers);
-          console.log(numbers);
           break;
         }
       }
