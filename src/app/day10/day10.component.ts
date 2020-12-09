@@ -28,6 +28,4 @@ export class Day10Component implements OnInit {
     const part02Result = this.part02Service.getResult(rawInput);
     this.part02ResultStr = part02Result.result + '\n' + part02Result.calculationTime + ' miliseconds';
   }
-
-
 }
