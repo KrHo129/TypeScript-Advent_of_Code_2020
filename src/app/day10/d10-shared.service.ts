@@ -6,10 +6,15 @@ import { Injectable } from '@angular/core';
 export class D10SharedService {
   constructor() {}
 
-  getParsedInput(rawInput: string) {
+  getParsedInput(rawInput: string): number[] {
     const splittedLines = rawInput.split('\n');
 
+    const numbers: number[] = [];
 
-    return splittedLines;
+    splittedLines.forEach(line => {
+      numbers.push(parseInt(line))
+    });
+
+    return numbers;
   }
 }
