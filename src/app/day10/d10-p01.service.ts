@@ -18,7 +18,8 @@ export class D10P01Service {
       .getParsedInput(rawInput)
       .sort((a, b) => a - b);
 
-    numbers.splice(0, 0, 0);
+    numbers.splice(0, 0, 0); // add a leadin zero
+
     const differences = {
       0: 0,
       1: 0,
