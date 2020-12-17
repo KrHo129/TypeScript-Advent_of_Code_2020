@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class D15InputService {
-  inputStr = ``;
+  inputStr = `16,11,15,0,1,7`;
 
   testInput = ``;
 
