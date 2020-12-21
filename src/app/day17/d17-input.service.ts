@@ -4,9 +4,18 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class D17InputService {
-  inputStr = ``;
+  inputStr = `######.#
+#.###.#.
+###.....
+#.####..
+##.#.###
+.######.
+###.####
+######.#`;
 
-  testInput = ``;
+  testInput = `.#.
+..#
+###`;
 
   constructor() {}
 
