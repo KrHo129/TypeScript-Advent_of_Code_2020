@@ -24,8 +24,6 @@ export class D16P01Service {
       );
     }
 
-    console.log();
-
     const calculationTime = this.timerService.getTime();
     return {
       result: this.sharedService.getSumOfArray(invalidNumbers).toString(),
