@@ -7,8 +7,13 @@ export class D18SharedService {
   constructor() {}
 
   getParsedInput(rawInput: string) {
-    const sections = rawInput.split('\n\n');
+    const lines = rawInput.split('\n');
 
-    return null;
+    const expressions = [];
+    for (let line of lines) {
+      expressions.push(line.replace(/ /g, ''));
+    }
+
+    return expressions;
   }
 }
