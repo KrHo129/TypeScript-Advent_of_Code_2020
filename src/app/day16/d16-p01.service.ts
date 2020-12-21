@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TimerService } from '../shared/timer.service';
-import { D16SharedService } from './d16-shared.service';
+import { D16SharedService, Ticket, TicketRule } from './d16-shared.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,10 +16,48 @@ export class D16P01Service {
 
     const input = this.sharedService.getParsedInput(rawInput);
 
+    const invalidNumbers: number[] = [];
+
+    for (let ticket of input.otherTickets) {
+      invalidNumbers.push(
+        ...this.getInvalidTicketNumbers(ticket, input.ticketRules)
+      );
+    }
+
+    console.log();
+
     const calculationTime = this.timerService.getTime();
     return {
-      result: 'sum'.toString(),
+      result: this.sharedService.getSumOfArray(invalidNumbers).toString(),
       calculationTime: calculationTime,
     };
+  }
+
+  getInvalidTicketNumbers(ticket: Ticket, rules: TicketRule[]) {
+    const invalidNumbers: number[] = [];
+    for (let number of ticket.numbers) {
+      if (!this.isValidNumber(number, rules)) {
+        invalidNumbers.push(number);
+      }
+    }
+
+    return invalidNumbers;
+  }
+
+  isValidNumber(number: number, rules: TicketRule[]): boolean {
+    let isValid = false;
+
+    for (let rule of rules) {
+      for (let validSection of rule.validSections) {
+        if (
+          number >= validSection.startNumber &&
+          number <= validSection.endNumber
+        ) {
+          isValid = true;
+        }
+      }
+    }
+
+    return isValid;
   }
 }
