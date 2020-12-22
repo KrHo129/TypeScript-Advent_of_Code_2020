@@ -16,4 +16,8 @@ export class D18SharedService {
 
     return expressions;
   }
+
+  getSumOfArray(numbers: number[]) {
+    return numbers.reduce((a, b) => a + b, 0);
+  }
 }
