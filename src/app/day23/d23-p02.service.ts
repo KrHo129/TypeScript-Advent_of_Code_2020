@@ -14,11 +14,19 @@ export class D23P02Service {
   getResult(rawInput: string): { result: string; calculationTime: number } {
     this.timerService.startTimer();
 
-    const input = this.sharedService.getParsedInput(rawInput);
+    const cups = this.sharedService.getParsedInputPart2(rawInput);
+
+    for (let i = 0; i < 10_000_000; i++) {
+      cups.mixCups();
+    }
+
+    console.log(cups);
+
+    const result = cups.getResult();
 
     const calculationTime = this.timerService.getTime();
     return {
-      result: 'null'.toString(),
+      result: result.toString(),
       calculationTime: calculationTime,
     };
   }

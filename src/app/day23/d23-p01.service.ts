@@ -14,11 +14,17 @@ export class D23P01Service {
   getResult(rawInput: string): { result: string; calculationTime: number } {
     this.timerService.startTimer();
 
-    const input = this.sharedService.getParsedInput(rawInput);
+    const cups = this.sharedService.getParsedInput(rawInput);
+
+    for (let i = 0; i < 100; i++) {
+      cups.mixCups();
+    }
+
+    const result = cups.getResult();
 
     const calculationTime = this.timerService.getTime();
     return {
-      result: 'null'.toString(),
+      result: result.toString(),
       calculationTime: calculationTime,
     };
   }
