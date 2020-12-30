@@ -20,8 +20,6 @@ export class D23P02Service {
       cups.mixCups();
     }
 
-    console.log(cups);
-
     const result = cups.getResult();
 
     const calculationTime = this.timerService.getTime();

@@ -109,17 +109,12 @@ class Cups2 {
     }
 
     this.maxCupNumber = cupNumbers[cupNumbers.length - 1];
-    // this.maxCupNumber = 9
     this.currentCupNumber = cupNumbers[0];
-
-    // console.log(this.cups[1_000_000]);
   }
 
   getResult(): number {
     const num1 = this.cups[1];
     const num2 = this.cups[num1];
-
-    console.log(num1, num2, num1 * num2);
 
     return num1 * num2;
   }
@@ -132,8 +127,6 @@ class Cups2 {
 
     const firstElement = this.getNthElement(1);
     const thirdElement = this.getNthElement(3);
-
-    // console.log(this.currentCupNumber, firstElement, thirdElement, targetCup);
 
     this.cups[this.currentCupNumber] = this.getNthElement(4);
     this.cups[thirdElement] = nextOfTargetCup;
@@ -176,7 +169,7 @@ class Cups2 {
   }
 
   private moveToNextCup(): void {
-    this.currentCupNumber = this.cups[this.currentCupNumber]
+    this.currentCupNumber = this.cups[this.currentCupNumber];
   }
 }
 
