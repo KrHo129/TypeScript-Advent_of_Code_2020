@@ -6,9 +6,17 @@ import { Injectable } from '@angular/core';
 export class D25SharedService {
   constructor() {}
 
-  getParsedInput(rawInput: string) {
-    const sections = rawInput.split('\n\n');
+  getParsedInput(
+    rawInput: string
+  ): {
+    cardPublicKey: number;
+    doorPublicKey: number;
+  } {
+    const sections = rawInput.split('\n');
 
-    return null;
+    const cardPublicKey = parseInt(sections[0]);
+    const doorPublicKey = parseInt(sections[1]);
+
+    return { cardPublicKey, doorPublicKey };
   }
 }

@@ -16,10 +16,37 @@ export class D25P01Service {
 
     const input = this.sharedService.getParsedInput(rawInput);
 
+    const cardLoopSize = this.getLoopSize(input.cardPublicKey);
+    const doorLoopSize = this.getLoopSize(input.doorPublicKey);
+
+    let result = 1;
+    for (let i = 0; i < cardLoopSize; i++) {
+      result = this.getTransformedValue(result, input.doorPublicKey);
+    }
+
     const calculationTime = this.timerService.getTime();
     return {
-      result: 'null'.toString(),
+      result: result.toString(),
       calculationTime: calculationTime,
     };
+  }
+
+  getLoopSize(publicKey: number): number {
+    let value = 1;
+
+    for (let i = 1; i < 150_000_000; i++) {
+      value = this.getTransformedValue(value, 7);
+
+      if (value === publicKey) {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+
+  getTransformedValue(value: number, subjectNumber: number): number {
+    let newVal = value * subjectNumber;
+    return newVal % 20201227;
   }
 }

@@ -4,14 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class D25InputService {
-  inputStr = ``;
+  inputStr = `19774466
+7290641`;
 
-  testInput = ``;
+  testInput = `5764801
+17807724`;
 
   constructor() {}
 
   getRawInput(): string {
     return this.inputStr;
-    // return this.testInput;
+    return this.testInput;
   }
 }
